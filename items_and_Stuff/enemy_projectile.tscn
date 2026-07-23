@@ -1,0 +1,116 @@
+[gd_scene format=3 uid="uid://b5g2peww8yb0t"]
+
+[ext_resource type="Script" uid="uid://d2o13l1rkdi1d" path="res://items_and_Stuff/projectile.gd" id="1_p2sl1"]
+[ext_resource type="Shader" uid="uid://e4uc0wpfydcl" path="res://items_and_Stuff/transparent_it.gdshader" id="2_1mwep"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3e54n"]
+shader = ExtResource("2_1mwep")
+shader_parameter/target_color = Color(0.4745098, 0.9019608, 0.91764706, 1)
+shader_parameter/precision = 0.10000000475
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_m65pe"]
+load_path = "res://.godot/imported/boom.png-fb417af8d72dd45de7f8600032b3cf11.ctex"
+
+[sub_resource type="Animation" id="Animation_c4rpk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Boom:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(1, 15, 71, 100)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ExplosionRange/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_8ovph"]
+resource_name = "anim"
+length = 1.6
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Boom:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Rect2(1, 15, 71, 100), Rect2(73, 15, 71, 100), Rect2(145, 15, 71, 100), Rect2(217, 15, 71, 100), Rect2(289, 15, 71, 100), Rect2(361, 15, 71, 100), Rect2(1, 116, 71, 100), Rect2(73, 116, 71, 100), Rect2(145, 116, 71, 100), Rect2(217, 116, 71, 100), Rect2(289, 116, 71, 100), Rect2(361, 116, 71, 100), Rect2(1, 217, 71, 100), Rect2(73, 217, 71, 100), Rect2(145, 217, 71, 100), Rect2(217, 217, 71, 100)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ExplosionRange/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jiomv"]
+_data = {
+&"RESET": SubResource("Animation_c4rpk"),
+&"anim": SubResource("Animation_8ovph")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ybbw1"]
+radius = 39.293766
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_y6njt"]
+radius = 128.24976
+
+[node name="PROJECTILE" type="CharacterBody2D" unique_id=744345631]
+collision_layer = 8
+collision_mask = 8
+script = ExtResource("1_p2sl1")
+
+[node name="Boom" type="Sprite2D" parent="." unique_id=639368964]
+material = SubResource("ShaderMaterial_3e54n")
+scale = Vector2(4, 4)
+texture = SubResource("CompressedTexture2D_m65pe")
+region_enabled = true
+region_rect = Rect2(1, 15, 71, 100)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=185228044]
+libraries/ = SubResource("AnimationLibrary_jiomv")
+speed_scale = 5.0
+
+[node name="Area2D" type="Area2D" parent="." unique_id=2009868464]
+collision_layer = 33
+collision_mask = 33
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=251618168]
+shape = SubResource("CircleShape2D_ybbw1")
+
+[node name="ExplosionRange" type="Area2D" parent="." unique_id=690968045]
+collision_layer = 20
+collision_mask = 20
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExplosionRange" unique_id=832438138]
+shape = SubResource("CircleShape2D_y6njt")
+disabled = true
+
+[connection signal="area_shape_entered" from="Area2D" to="." method="on_area_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="area_shape_entered" from="ExplosionRange" to="." method="on_explosion_area_entered"]
+[connection signal="body_entered" from="ExplosionRange" to="." method="on_explosion_body_entered"]

@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="BaseItem" format=3 uid="uid://8okhlnmulham"]
+
+[ext_resource type="Script" uid="uid://btq70p2oybq54" path="res://items_and_Stuff/base_item.gd" id="1_qwi18"]
+
+[resource]
+script = ExtResource("1_qwi18")
+item_name = "The COol ONe"
+metadata/_custom_type_script = "uid://btq70p2oybq54"

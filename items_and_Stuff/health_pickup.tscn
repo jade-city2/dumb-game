@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://nb202760en2b"]
+
+[ext_resource type="Shader" uid="uid://e4uc0wpfydcl" path="res://items_and_Stuff/transparent_it.gdshader" id="1_7o33u"]
+[ext_resource type="Script" uid="uid://4dgtf5vf284g" path="res://items_and_Stuff/health_pickup.gd" id="1_c1ydx"]
+[ext_resource type="Texture2D" uid="uid://d3nuelxewxj5i" path="res://sprites/other/health_pickup.png" id="1_lnaql"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_c1ydx"]
+shader = ExtResource("1_7o33u")
+shader_parameter/target_color = Color(0, 1, 0, 1)
+shader_parameter/precision = 0.00400000019
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ybbw1"]
+radius = 32.0
+
+[node name="HealthPickup" type="Area2D" unique_id=1681229277]
+collision_mask = 5
+script = ExtResource("1_c1ydx")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1750466878]
+material = SubResource("ShaderMaterial_c1ydx")
+texture = ExtResource("1_lnaql")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1720085050]
+shape = SubResource("CircleShape2D_ybbw1")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

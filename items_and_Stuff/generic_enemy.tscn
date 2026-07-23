@@ -1,0 +1,75 @@
+[gd_scene format=3 uid="uid://dqjy6hruqch1p"]
+
+[ext_resource type="Script" uid="uid://tb4apljwhxjn" path="res://items_and_Stuff/generic_enemy.gd" id="1_6kmeh"]
+[ext_resource type="Shader" uid="uid://e4uc0wpfydcl" path="res://items_and_Stuff/transparent_it.gdshader" id="2_qtsvr"]
+[ext_resource type="Texture2D" uid="uid://c45kdepi3vj0p" path="res://sprites/character/bad guy 1.png" id="3_qtsvr"]
+[ext_resource type="Texture2D" uid="uid://brr4w6ghqhvb6" path="res://sprites/character/gun.png" id="4_evi5f"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qtsvr"]
+size = Vector2(128, 128)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nq6cw"]
+radius = 700.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_l2uxv"]
+radius = 64.49806
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qb4cc"]
+shader = ExtResource("2_qtsvr")
+shader_parameter/target_color = Color(0, 1, 0, 1)
+shader_parameter/precision = 0.10000000475
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_76ato"]
+shader = ExtResource("2_qtsvr")
+shader_parameter/target_color = Color(0, 1, 0, 1)
+shader_parameter/precision = 0.00400000019
+
+[node name="GenericEnemy" type="CharacterBody2D" unique_id=1187400388]
+collision_layer = 2
+collision_mask = 3
+script = ExtResource("1_6kmeh")
+
+[node name="HurtBox" type="Area2D" parent="." unique_id=1046330757]
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="HurtBox" unique_id=253847193]
+shape = SubResource("RectangleShape2D_qtsvr")
+
+[node name="HitBox" type="Area2D" parent="." unique_id=1251077924]
+collision_layer = 32
+collision_mask = 0
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="HitBox" unique_id=1647304934]
+shape = SubResource("RectangleShape2D_qtsvr")
+
+[node name="PlayerDetection" type="Area2D" parent="." unique_id=1653129179]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection" unique_id=996690589]
+shape = SubResource("CircleShape2D_nq6cw")
+debug_color = Color(0, 0, 1, 0.18039216)
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="." unique_id=740994562]
+shape = SubResource("CircleShape2D_l2uxv")
+
+[node name="EvilGodotLogo" type="Sprite2D" parent="." unique_id=1469738242]
+material = SubResource("ShaderMaterial_qb4cc")
+texture = ExtResource("3_qtsvr")
+
+[node name="Node2D" type="Node2D" parent="." unique_id=214955515]
+
+[node name="Sprite2D2" type="Sprite2D" parent="Node2D" unique_id=1110763004]
+material = SubResource("ShaderMaterial_76ato")
+position = Vector2(100, 0)
+scale = Vector2(1, 0.2)
+texture = ExtResource("4_evi5f")
+
+[node name="Marker2D" type="Marker2D" parent="Node2D" unique_id=1750388213]
+position = Vector2(160, 0)
+
+[connection signal="area_shape_entered" from="HurtBox" to="." method="_hurt_box_entered"]
+[connection signal="body_entered" from="HurtBox" to="." method="hurt_box_entered"]
+[connection signal="body_entered" from="PlayerDetection" to="." method="player_detected"]
+[connection signal="body_exited" from="PlayerDetection" to="." method="player_exited"]

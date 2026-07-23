@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ArmorItem" format=3 uid="uid://runc0lawyl2j"]
+
+[ext_resource type="Script" uid="uid://d3hilglbgdfg7" path="res://items_and_Stuff/armor_item.gd" id="1_taj68"]
+
+[resource]
+script = ExtResource("1_taj68")
+phys_def = 4
+mag_def = 3
+item_name = "Chestplate"
+price = 25
+metadata/_custom_type_script = "uid://d3hilglbgdfg7"
