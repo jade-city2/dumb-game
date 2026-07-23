@@ -1,0 +1,847 @@
+[gd_scene format=3 uid="uid://cvgc77j4kgh3s"]
+
+[ext_resource type="Texture2D" uid="uid://b07hpt2sx1jh8" path="res://sprites/stage/marble_zone/mz1.png" id="1_hhkb8"]
+[ext_resource type="PackedScene" uid="uid://c3ghhusacoccn" path="res://player.tscn" id="1_x2uf6"]
+[ext_resource type="Texture2D" uid="uid://s4fisigkv5j1" path="res://sprites/stage/marble_zone/mz2.png" id="2_wpsbe"]
+[ext_resource type="Texture2D" uid="uid://fvghut7xx2aj" path="res://sprites/stage/marble_zone/mz3.png" id="3_asohs"]
+[ext_resource type="Script" uid="uid://l2byfts771j4" path="res://death_plane.gd" id="3_bt7i5"]
+[ext_resource type="PackedScene" uid="uid://dqjy6hruqch1p" path="res://items_and_Stuff/generic_enemy.tscn" id="4_l2uxv"]
+[ext_resource type="Texture2D" uid="uid://bxx07g2teqb1e" path="res://sprites/background/background_layer_1.png" id="5_8tkyl"]
+[ext_resource type="Shader" uid="uid://e4uc0wpfydcl" path="res://items_and_Stuff/transparent_it.gdshader" id="6_2xkcy"]
+[ext_resource type="Script" uid="uid://d3dao4nw5vh60" path="res://win_plane.gd" id="7_asohs"]
+[ext_resource type="Texture2D" uid="uid://bjbqv012gbaol" path="res://sprites/background/background_layer_2.png" id="7_s6ntl"]
+[ext_resource type="Texture2D" uid="uid://b5vpunftairak" path="res://sprites/background/background_layer_3.png" id="8_136v4"]
+[ext_resource type="Texture2D" uid="uid://dtwkjeriesg8" path="res://sprites/background/background_layer_5.png" id="9_76ato"]
+[ext_resource type="Texture2D" uid="uid://bqytbhv4fce1w" path="res://sprites/background/background_layer_6.png" id="10_76ato"]
+[ext_resource type="AudioStream" uid="uid://cdj5emhhc1slg" path="res://epic level music.mp3" id="13_wpsbe"]
+[ext_resource type="PackedScene" uid="uid://nb202760en2b" path="res://items_and_Stuff/health_pickup.tscn" id="15_u6gxj"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hhkb8"]
+shader = ExtResource("6_2xkcy")
+shader_parameter/target_color = Color(0.29411766, 0.29411766, 0.29411766, 1)
+shader_parameter/precision = 0.10000000475
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qb4cc"]
+size = Vector2(256, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nq6cw"]
+size = Vector2(130, 2966)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8tkyl"]
+shader = ExtResource("6_2xkcy")
+shader_parameter/target_color = Color(0, 1, 0, 1)
+shader_parameter/precision = 0.0350000016625
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ybbw1"]
+size = Vector2(512, 384)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8mjmv"]
+size = Vector2(256, 256)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u6gxj"]
+size = Vector2(128, 128)
+
+[sub_resource type="Animation" id="Animation_u6gxj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_sbfph"]
+resource_name = "anim"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_c6mq3"]
+_data = {
+&"RESET": SubResource("Animation_u6gxj"),
+&"anim": SubResource("Animation_sbfph")
+}
+
+[node name="Node2D" type="Node2D" unique_id=251744075]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1244286360]
+z_index = -1
+material = SubResource("ShaderMaterial_hhkb8")
+position = Vector2(0, -1024)
+scale = Vector2(4, 4)
+texture = ExtResource("1_hhkb8")
+centered = false
+region_enabled = true
+region_rect = Rect2(24, 264, 5504, 1536)
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=1661682311]
+z_index = -1
+material = SubResource("ShaderMaterial_hhkb8")
+position = Vector2(22016, -1024)
+scale = Vector2(4, 4)
+texture = ExtResource("2_wpsbe")
+centered = false
+region_enabled = true
+region_rect = Rect2(24, 264, 6656, 1536)
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D3" type="Sprite2D" parent="." unique_id=264795419]
+z_index = -1
+material = SubResource("ShaderMaterial_hhkb8")
+position = Vector2(48640, 256)
+scale = Vector2(4, 4)
+texture = ExtResource("3_asohs")
+centered = false
+region_enabled = true
+region_rect = Rect2(24, 264, 6656, 2048)
+metadata/_edit_lock_ = true
+
+[node name="CharacterBody2D" parent="." unique_id=94998651 instance=ExtResource("1_x2uf6")]
+position = Vector2(640, 1344)
+
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D" unique_id=1198481077]
+zoom = Vector2(0.5, 0.5)
+limit_left = 0
+limit_top = 0
+limit_right = 75264
+limit_bottom = 8448
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+drag_left_margin = 0.4
+drag_top_margin = 0.6
+drag_right_margin = 0.1
+drag_bottom_margin = 0.1
+editor_draw_drag_margin = true
+
+[node name="DeathPlane" type="Area2D" parent="." unique_id=2076347145]
+position = Vector2(9000, 10438)
+collision_layer = 12
+collision_mask = 13
+script = ExtResource("3_bt7i5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeathPlane" unique_id=1917294828]
+position = Vector2(-3752, -8742)
+shape = SubResource("RectangleShape2D_qb4cc")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="DeathPlane" unique_id=817664593]
+position = Vector2(-10400, -1336)
+shape = SubResource("RectangleShape2D_nq6cw")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="DeathPlane" unique_id=468144609]
+position = Vector2(11856, -1552)
+shape = SubResource("RectangleShape2D_nq6cw")
+
+[node name="WinPlane" type="Area2D" parent="." unique_id=1070589486]
+position = Vector2(83904, 2880)
+collision_layer = 12
+collision_mask = 13
+script = ExtResource("7_asohs")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="WinPlane" unique_id=2117209372]
+position = Vector2(-10400, -1336)
+shape = SubResource("RectangleShape2D_nq6cw")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="." unique_id=2141167072]
+
+[node name="Parallax2D" type="Parallax2D" parent="ParallaxBackground" unique_id=1282630479]
+
+[node name="BackgroundLayer1" type="Sprite2D" parent="ParallaxBackground/Parallax2D" unique_id=860632317]
+texture = ExtResource("5_8tkyl")
+centered = false
+
+[node name="Parallax2D2" type="Parallax2D" parent="ParallaxBackground" unique_id=1961030424]
+scroll_scale = Vector2(1.01, 1)
+repeat_size = Vector2(1280, 0)
+autoscroll = Vector2(-16, 0)
+repeat_times = 120
+
+[node name="BackgroundLayer1" type="Sprite2D" parent="ParallaxBackground/Parallax2D2" unique_id=243613510]
+material = SubResource("ShaderMaterial_8tkyl")
+scale = Vector2(5, 5)
+texture = ExtResource("7_s6ntl")
+centered = false
+
+[node name="Parallax2D3" type="Parallax2D" parent="ParallaxBackground" unique_id=2075441583]
+scroll_scale = Vector2(1.01, 1)
+repeat_size = Vector2(1280, 0)
+repeat_times = 120
+
+[node name="BackgroundLayer1" type="Sprite2D" parent="ParallaxBackground/Parallax2D3" unique_id=918092081]
+material = SubResource("ShaderMaterial_8tkyl")
+scale = Vector2(5, 5)
+texture = ExtResource("8_136v4")
+centered = false
+
+[node name="Parallax2D4" type="Parallax2D" parent="ParallaxBackground" unique_id=219981439]
+scroll_scale = Vector2(1.03, 1)
+repeat_size = Vector2(1280, 0)
+repeat_times = 120
+
+[node name="BackgroundLayer1" type="Sprite2D" parent="ParallaxBackground/Parallax2D4" unique_id=851469937]
+material = SubResource("ShaderMaterial_8tkyl")
+position = Vector2(3.5527137e-15, 127.999985)
+scale = Vector2(5, 5)
+texture = ExtResource("9_76ato")
+centered = false
+
+[node name="Parallax2D5" type="Parallax2D" parent="ParallaxBackground" unique_id=281371525]
+scroll_scale = Vector2(1.08, 1)
+repeat_size = Vector2(2560, 0)
+repeat_times = 120
+
+[node name="BackgroundLayer1" type="Sprite2D" parent="ParallaxBackground/Parallax2D5" unique_id=1314654256]
+material = SubResource("ShaderMaterial_8tkyl")
+position = Vector2(0, 63.999996)
+scale = Vector2(5, 5)
+texture = ExtResource("10_76ato")
+centered = false
+
+[node name="BackgroundLayer2" type="Sprite2D" parent="ParallaxBackground/Parallax2D5" unique_id=1665161031]
+material = SubResource("ShaderMaterial_8tkyl")
+position = Vector2(1053, 272)
+scale = Vector2(5, 5)
+texture = ExtResource("10_76ato")
+centered = false
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1666516380]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D" unique_id=1924009619]
+polygon = PackedVector2Array(0, 1536, 384, 1536, 704, 1472, 1024, 1536, 2304, 1536, 2304, 1664, 2816, 1600, 2816, 1536, 3328, 1536, 3328, 1664, 3840, 1664, 3840, 1536, 4352, 1536, 4352, 1664, 4864, 1664, 4864, 1280, 5120, 1280, 5120, 1728, 5376, 1728, 5376, 1088, 5632, 1088, 5632, 1216, 5888, 1216, 5888, 768, 6656, 768, 6656, 896, 7424, 896, 7424, 512, 7680, 512, 7680, 896, 7936, 896, 7936, 768, 8256, 768, 8448, 832, 8960, 1344, 9152, 1408, 9216, 1408, 9216, 1536, 8704, 1536, 8704, 1280, 8576, 1280, 8576, 1152, 8320, 1152, 8320, 1920, 8960, 1920, 8960, 1792, 9216, 1792, 9216, 1920, 9472, 1920, 9472, 1536, 9728, 1536, 9728, 1920, 9984, 1920, 9984, 1792, 10752, 1792, 10752, 1920, 14336, 1920, 14336, 1792, 14464, 1792, 14592, 1856, 15104, 2368, 15296, 2432, 15360, 2432, 15360, 2560, 14848, 2560, 14848, 2304, 14720, 2304, 14720, 2176, 14336, 2176, 14336, 2368, 14080, 2368, 14080, 2432, 13824, 2432, 13824, 2368, 13568, 2368, 13568, 2432, 13312, 2432, 13312, 2368, 13056, 2368, 13056, 2432, 12800, 2432, 12800, 2368, 12544, 2368, 12544, 2432, 10240, 2432, 10240, 2944, 10368, 2944, 10368, 3328, 10624, 3328, 10624, 3456, 10752, 3456, 10752, 3520, 10880, 3584, 10880, 3712, 11008, 3712, 11008, 3776, 11136, 3840, 11136, 3968, 11264, 3968, 11264, 4224, 11008, 4224, 11008, 4096, 10496, 4096, 10496, 4160, 10496, 4224, 10240, 4224, 10240, 4480, 11520, 4480, 11520, 4608, 11776, 4608, 11776, 4480, 11904, 4480, 11904, 4608, 12032, 4608, 12032, 4736, 12288, 4736, 12288, 4928, 15360, 4928, 15360, 4736, 15616, 4736, 15616, 4608, 15872, 4608, 15872, 4480, 16768, 4480, 16768, 4224, 16896, 4224, 16896, 3712, 17408, 3712, 17408, 2432, 17792, 2432, 17792, 2176, 17920, 2176, 17920, 1792, 18944, 1792, 18944, 1920, 19776, 1920, 19712, 1536, 19968, 1536, 19968, 1920, 20224, 1920, 20224, 1792, 20480, 1792, 20480, 1536, 20736, 1536, 20736, 1664, 21248, 1600, 21248, 1280, 21504, 1280, 21504, 1920, 21760, 1920, 21760, 1536, 23040, 1536, 23040, 1920, 23296, 1920, 23296, 1472, 23552, 1536, 23552, 1920, 23808, 1920, 23808, 1792, 25088, 1792, 25088, 1920, 26112, 1920, 26112, 1792, 26240, 1792, 26368, 1856, 26880, 2368, 27008, 2432, 28288, 2432, 28288, 2816, 28160, 2816, 28160, 3200, 25984, 3200, 25984, 3072, 26112, 3072, 26112, 2944, 26880, 2944, 26880, 2816, 27136, 2816, 27136, 2560, 26624, 2560, 26624, 2304, 26496, 2304, 26496, 2176, 26112, 2176, 26112, 2432, 25728, 2432, 25728, 2560, 25472, 2560, 25472, 2432, 25088, 2432, 25088, 3200, 24832, 3200, 24832, 3328, 24576, 3328, 24576, 3584, 24320, 3584, 24320, 3712, 24192, 3712, 24192, 4096, 24320, 4096, 24320, 4224, 24448, 4224, 24448, 4480, 24832, 4480, 24832, 4736, 24064, 4736, 24064, 4992, 28928, 4992, 28928, 4736, 29184, 4736, 29184, 4480, 30976, 4480, 30976, 4608, 30848, 4608, 30848, 4736, 30720, 4736, 30720, 4864, 34304, 4928, 34304, 4736, 34560, 4736, 34560, 4608, 34816, 4608, 34816, 4480, 36736, 4480, 36736, 4224, 36864, 4224, 36864, 4096, 36992, 4096, 36992, 3968, 37376, 3968, 37312, 2560, 33280, 2560, 33280, 2368, 32384, 2176, 32384, 2432, 32256, 2432, 32256, 2176, 31744, 2176, 31744, 2688, 31616, 2688, 31616, 2560, 31232, 2560, 31232, 1792, 31744, 1792, 31744, 1920, 32256, 1920, 32256, 1536, 32512, 1536, 32512, 1664, 33024, 1600, 33024, 1536, 33280, 1536, 33280, 1664, 33536, 1664, 33536, 1088, 33792, 1088, 33792, 1152, 34048, 1152, 34048, 768, 34304, 768, 34304, 832, 34496, 832, 34560, 512, 34816, 512, 34816, 832, 35072, 832, 35072, 768, 37440, 768, 37632, 832, 38144, 1344, 38272, 1408, 38400, 1408, 38400, 1536, 37888, 1536, 37888, 1280, 37760, 1280, 37760, 1152, 37504, 1152, 37504, 1920, 38208, 1920, 38144, 1792, 38400, 1792, 38400, 1920, 38656, 1920, 38656, 1536, 38912, 1536, 38912, 1920, 39168, 1920, 39168, 1792, 39552, 1792, 39680, 1856, 39936, 2112, 39936, 2816, 40320, 2816, 40320, 2944, 40448, 2944, 40448, 3200, 39936, 3200, 39936, 3712, 39808, 3712, 39808, 3584, 39424, 3584, 39424, 3456, 39296, 3456, 39296, 3584, 39040, 3584, 39040, 3456, 38848, 3456, 38848, 3584, 38592, 3584, 38592, 3456, 38400, 3456, 38400, 4992, 41472, 4928, 41472, 4736, 41728, 4736, 41728, 4608, 41984, 4608, 41984, 4480, 42880, 4480, 42880, 4224, 43008, 4224, 43008, 3712, 43520, 3712, 43520, 3456, 43904, 3456, 43904, 3200, 44032, 3200, 44032, 3072, 45056, 3072, 45056, 2688, 45568, 2688, 45568, 2432, 45952, 2432, 45952, 2176, 46080, 2176, 46080, 1792, 46272, 1728, 46592, 1792, 47040, 1792, 47296, 1728, 47616, 1792, 48064, 1792, 48320, 1728, 48640, 1792, 49664, 1792, 49664, 2176, 49920, 2176, 49920, 1792, 50176, 1792, 50176, 2176, 50432, 2176, 50432, 2048, 53824, 2048, 54016, 2112, 54528, 2624, 54720, 2688, 54784, 2688, 54784, 2816, 54272, 2816, 54272, 2560, 54144, 2560, 54144, 2432, 53760, 2432, 53760, 2816, 52736, 2816, 52736, 3456, 52480, 3456, 52480, 3328, 51072, 3328, 51072, 3456, 49920, 3456, 49920, 3328, 49664, 3328, 49664, 3456, 49408, 3456, 49408, 3584, 49152, 3584, 49152, 3840, 48896, 3840, 48896, 3968, 48768, 3968, 48768, 4352, 48640, 4288, 48640, 4736, 48768, 4736, 48768, 5120, 48640, 5120, 48640, 5376, 48768, 5376, 48768, 5760, 49152, 5760, 49152, 5888, 49280, 5888, 49280, 6016, 49408, 6016, 49408, 6144, 48896, 6144, 48896, 6400, 49920, 6400, 49920, 6784, 49664, 6784, 49664, 7296, 50048, 7296, 50048, 7168, 50176, 7168, 50176, 7040, 50560, 7040, 50560, 7168, 50688, 7168, 50688, 7296, 51456, 7296, 51456, 7040, 51712, 7040, 51712, 7232, 55296, 7232, 55296, 6400, 54784, 6400, 54784, 6144, 55808, 6144, 55808, 6400, 56064, 6400, 56064, 6272, 56320, 6272, 56320, 6400, 56576, 6400, 56576, 6272, 57600, 6272, 57600, 6016, 57856, 6016, 57856, 6272, 57856, 6528, 57600, 6528, 57600, 6656, 57344, 6656, 57344, 6912, 57088, 6912, 56960, 7040, 56960, 7680, 57216, 7680, 57216, 7808, 57344, 7808, 57344, 7936, 57472, 7936, 57472, 8064, 57600, 8064, 57600, 8192, 57728, 8192, 57728, 8320, 58624, 8320, 58624, 8064, 58880, 8064, 58880, 7808, 59648, 7808, 59648, 7936, 59520, 7936, 59520, 8064, 59392, 8064, 59392, 8256, 61952, 8256, 61952, 8064, 62208, 8064, 62208, 7936, 62464, 7936, 62464, 7808, 63360, 7808, 63360, 7552, 63488, 7552, 63488, 7424, 64256, 7424, 64256, 7296, 64512, 7296, 64512, 7424, 64768, 7424, 64768, 7296, 65024, 7296, 65024, 7424, 65280, 7424, 65280, 7296, 65536, 7296, 65536, 7424, 65792, 7424, 65792, 7296, 66048, 7296, 66048, 7808, 66304, 7808, 66304, 7936, 66560, 7936, 66560, 7808, 66688, 7808, 66688, 7936, 66816, 7936, 66816, 8064, 67072, 8064, 67072, 8256, 69120, 8256, 69120, 7808, 70528, 7808, 70528, 7552, 70656, 7552, 70656, 7040, 71168, 7040, 71168, 5888, 70144, 5888, 70144, 5504, 69760, 5504, 69760, 5376, 70144, 5376, 70144, 4864, 69120, 4864, 69120, 4352, 68096, 4352, 68096, 3712, 68480, 3712, 68480, 3456, 68608, 3456, 68608, 3072, 69632, 3072, 69632, 3200, 70144, 3200, 70144, 2816, 70400, 2816, 70400, 2944, 70912, 2944, 70912, 2560, 71168, 2560, 71168, 2816, 71616, 2816, 72192, 3072, 72704, 3072, 72704, 3200, 73216, 3200, 73216, 3072, 73600, 3072, 73600, 3200, 74112, 3200, 74112, 3072, 75264, 3072, 75264, 3328, 72192, 5376, 72192, 8448, 48640, 8448, 23616, 11904, -64, 5760, -320, 2048, -320, -512, 68096, 0, 68096, 3328, 66432, 3328, 66432, 3456, 66048, 3456, 66048, 3328, 65408, 3328, 65408, 3456, 65024, 3456, 65024, 3328, 64000, 3328, 64000, 3456, 63744, 3456, 63744, 3584, 63488, 3584, 63488, 3840, 63232, 3840, 63232, 3968, 63104, 3968, 63104, 4608, 63360, 4608, 63360, 4736, 63488, 4736, 63488, 4864, 63616, 4864, 63616, 4992, 63744, 4992, 63744, 5120, 63872, 5120, 63872, 5248, 64000, 5248, 64000, 5504, 60160, 5504, 60160, 5760, 58880, 5760, 58880, 5504, 57344, 5504, 57344, 6016, 57216, 6016, 57216, 5888, 56832, 5888, 56832, 5696, 56576, 5696, 56576, 5760, 56320, 5760, 56320, 5696, 56064, 5696, 56064, 5760, 55680, 5760, 55680, 5504, 54912, 5504, 54912, 5760, 54784, 5760, 54784, 5504, 53760, 5504, 53760, 6528, 51200, 6528, 51200, 7040, 51072, 7040, 51072, 6912, 50688, 6912, 50688, 6400, 50432, 6400, 50432, 6272, 50688, 6272, 50688, 6016, 50944, 6016, 50944, 5888, 51200, 5888, 51200, 5760, 52096, 5760, 52096, 5504, 52224, 5504, 52224, 5376, 51584, 5376, 51584, 5248, 52480, 5248, 52480, 4992, 52736, 4992, 52736, 5184, 54784, 5184, 54784, 4736, 55168, 4736, 55168, 4480, 55296, 4480, 55296, 4224, 55424, 4224, 55424, 4096, 55552, 4096, 55552, 3968, 55808, 3968, 55808, 3712, 56192, 3712, 56192, 3456, 56320, 3456, 56320, 3072, 56512, 3008, 56704, 3072, 56832, 3072, 56832, 1280, 68032, 1280, 68032, 0, 56832, 64, 46592, 0, 46592, 1024, 45568, 1024, 45568, 2048, 44928, 2048, 44928, 2176, 44544, 2176, 44544, 2560, 43520, 2560, 43520, 3072, 42880, 3072, 42880, 3200, 42496, 3200, 42496, 4224, 39296, 4224, 39296, 4096, 39424, 4096, 39424, 3968, 40192, 3968, 40192, 3712, 40448, 3712, 40448, 3456, 40832, 3456, 40832, 3200, 40960, 3200, 40960, 3072, 40704, 3072, 40704, 2560, 40448, 2560, 40448, 0, 29184, 0, 29184, 1792, 30336, 1792, 30464, 1856, 30720, 2112, 30720, 2816, 31104, 2816, 31104, 2944, 32000, 2944, 32000, 2688, 32256, 2688, 32256, 2816, 33280, 2816, 33280, 3328, 32128, 3328, 32128, 3200, 31488, 3200, 31488, 3584, 31232, 3584, 29184, 3584, 29184, 4096, 29440, 4096, 29440, 4224, 28672, 4224, 28672, 4736, 28544, 4736, 28544, 4608, 28160, 4608, 28160, 4736, 27904, 4736, 27904, 4800, 27648, 4800, 27648, 4736, 26880, 4736, 26880, 4800, 26624, 4800, 26624, 4736, 25856, 4736, 25856, 4800, 25600, 4800, 25600, 4736, 25024, 4736, 25024, 4480, 25088, 4480, 25088, 4352, 24960, 4352, 24960, 4096, 24576, 4096, 24576, 3968, 24704, 3968, 24704, 3840, 24832, 3840, 24832, 3712, 25088, 3712, 25088, 3904, 27136, 3904, 27136, 3712, 27392, 3712, 27392, 3584, 27648, 3584, 27648, 3456, 28544, 3456, 28544, 3200, 28672, 3200, 28672, 2816, 28544, 2816, 28544, 2176, 28672, 2176, 28672, 2048, 28160, 2048, 28160, 2176, 27904, 2176, 27904, 2048, 27392, 2048, 27392, 2176, 27136, 2176, 27136, 0, 17408, 0, 17408, 2176, 16384, 2176, 16384, 2944, 16896, 2944, 16896, 3072, 16768, 3072, 16768, 3200, 16384, 3200, 16384, 3456, 15232, 3456, 15232, 3200, 14592, 3200, 14592, 3840, 15232, 3840, 15232, 3712, 16384, 3712, 16384, 4096, 15360, 4096, 15360, 4224, 11520, 4224, 11520, 3584, 11264, 3584, 11264, 3200, 10880, 3200, 10880, 3072, 11136, 3072, 11136, 2944, 11392, 2944, 11392, 3072, 11904, 3072, 11904, 2944, 11968, 2944, 11968, 3072, 12160, 3072, 12160, 2944, 12288, 2944, 12288, 3072, 12544, 3072, 12544, 2944, 12800, 2944, 12800, 3072, 13056, 3072, 13056, 2944, 13312, 2944, 13312, 3072, 13568, 3072, 13568, 2944, 13824, 2944, 13824, 3072, 14080, 3072, 14080, 2944, 15104, 2944, 15104, 2816, 15360, 2816, 15360, 2880, 15872, 2880, 15872, 1792, 16384, 1792, 16384, 0, 0, 0)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="StaticBody2D" unique_id=1107760095]
+polygon = PackedVector2Array(57344, 7424, 57344, 7296, 57472, 7296, 57472, 7168, 57600, 7168, 57600, 7040, 57856, 7040, 57856, 6784, 58240, 6784, 58240, 6528, 58368, 6528, 58368, 6400, 58880, 6400, 58880, 6016, 60160, 6016, 60160, 6144, 60800, 6144, 60800, 5760, 64384, 5760, 64384, 5504, 64512, 5504, 64512, 5376, 65024, 5376, 65024, 5504, 65280, 5504, 65280, 5888, 68096, 5888, 68096, 5760, 68480, 5760, 68480, 5504, 68608, 5504, 68608, 5376, 69248, 5376, 69248, 5632, 69504, 5632, 69504, 5760, 69632, 5760, 69632, 5888, 69760, 5888, 69760, 6016, 69888, 6016, 69888, 6144, 70016, 6144, 70016, 6272, 70144, 6272, 70144, 6400, 70528, 6400, 70528, 6528, 70144, 6528, 70144, 6784, 69120, 6784, 69120, 7168, 70144, 7168, 70144, 7552, 69888, 7552, 69888, 7424, 68352, 7424, 68352, 6912, 68096, 6912, 68096, 6784, 67072, 6784, 67072, 7552, 66304, 7552, 66304, 6912, 66048, 6912, 66048, 6720, 64256, 6720, 64256, 6784, 64000, 6784, 64000, 6912, 61952, 6912, 61952, 7424, 62976, 7424, 62976, 7552, 59904, 7552, 59904, 7424, 58880, 7424, 58880, 7552, 58368, 7552, 58368, 8064, 58240, 8064, 58240, 7936, 57856, 7936, 57856, 7552, 57472, 7552, 57472, 7424)
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="StaticBody2D" unique_id=1364363615]
+polygon = PackedVector2Array(31232, 3840, 32128, 3840, 32128, 3584, 36480, 3584, 36480, 3456, 36736, 3456, 36736, 3584, 37120, 3584, 37120, 3712, 36608, 3712, 36608, 3968, 36480, 3968, 36480, 4096, 36352, 4096, 36352, 4224, 36096, 4224, 36096, 4096, 35584, 4096, 35584, 4224, 34304, 4224, 34304, 4096, 31232, 4096)
+
+[node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="StaticBody2D" unique_id=514663710]
+polygon = PackedVector2Array(55808, 3072, 55552, 3072, 55552, 3200, 55296, 3200, 55296, 2816, 55040, 2816, 55040, 3200, 54784, 3200, 54784, 3072, 54528, 3072, 54528, 3200, 53760, 3200, 53760, 3328, 53248, 3328, 53248, 3456, 53120, 3456, 53120, 3712, 51712, 3712, 51712, 3968, 51200, 3968, 51200, 4352, 50688, 4352, 50688, 3968, 50432, 3968, 50432, 3840, 50304, 3840, 50304, 3712, 49664, 3712, 49664, 3968, 49408, 3968, 49408, 4096, 49280, 4096, 49280, 4224, 49152, 4224, 49152, 4480, 49024, 4480, 49024, 5120, 49152, 5120, 49152, 5376, 49280, 5376, 49280, 5504, 49408, 5504, 49408, 5632, 49536, 5632, 49536, 5760, 49664, 5760, 49664, 6272, 50112, 6272, 50112, 6784, 50176, 6784, 50176, 5504, 50688, 5504, 50816, 5248, 49920, 5248, 49664, 5376, 49664, 4736, 49920, 4736, 49920, 4672, 50176, 4672, 50176, 4736, 50432, 4736, 50432, 4672, 50688, 4672, 50688, 4736, 51712, 4736, 51712, 4800, 52096, 4992, 52224, 4992, 52224, 4416, 52736, 4416, 52736, 4352, 54912, 4352, 54912, 3968, 55040, 3968, 55040, 3840, 55296, 3840, 55296, 3584, 55552, 3584, 55552, 3456, 55808, 3456)
+
+[node name="CollisionPolygon2D5" type="CollisionPolygon2D" parent="StaticBody2D" unique_id=1487512001]
+polygon = PackedVector2Array(64512, 3712, 65024, 3712, 65024, 4864, 64000, 4864, 64000, 4480, 63616, 4480, 63616, 4352, 63488, 4352, 63488, 4224, 63616, 4224, 63616, 4096, 63744, 4096, 63744, 3968, 64256, 3968, 64256, 3840, 64512, 3840)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=388757529]
+position = Vector2(65792, 4160)
+shape = SubResource("RectangleShape2D_ybbw1")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D" unique_id=56479202]
+position = Vector2(66176, 5632)
+shape = SubResource("RectangleShape2D_8mjmv")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D" unique_id=809939670]
+position = Vector2(67200, 5632)
+shape = SubResource("RectangleShape2D_8mjmv")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="StaticBody2D" unique_id=1005978784]
+position = Vector2(51840, 3328)
+shape = SubResource("RectangleShape2D_8mjmv")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="StaticBody2D" unique_id=1531011741]
+position = Vector2(34432, 3328)
+shape = SubResource("RectangleShape2D_8mjmv")
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="StaticBody2D" unique_id=596324900]
+position = Vector2(35456, 3328)
+shape = SubResource("RectangleShape2D_8mjmv")
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="StaticBody2D" unique_id=887488955]
+position = Vector2(25536, 3264)
+shape = SubResource("RectangleShape2D_u6gxj")
+
+[node name="CollisionShape2D9" type="CollisionShape2D" parent="StaticBody2D" unique_id=127909878]
+position = Vector2(25792, 3520)
+shape = SubResource("RectangleShape2D_u6gxj")
+
+[node name="CollisionShape2D10" type="CollisionShape2D" parent="StaticBody2D" unique_id=1764018736]
+position = Vector2(25408, 3648)
+shape = SubResource("RectangleShape2D_u6gxj")
+
+[node name="CollisionShape2D11" type="CollisionShape2D" parent="StaticBody2D" unique_id=985605649]
+position = Vector2(38848, 4288)
+shape = SubResource("RectangleShape2D_u6gxj")
+
+[node name="CollisionShape2D12" type="CollisionShape2D" parent="StaticBody2D" unique_id=131483017]
+position = Vector2(39104, 4544)
+shape = SubResource("RectangleShape2D_u6gxj")
+
+[node name="CollisionShape2D13" type="CollisionShape2D" parent="StaticBody2D" unique_id=167396611]
+position = Vector2(38720, 4672)
+shape = SubResource("RectangleShape2D_u6gxj")
+
+[node name="CollisionShape2D14" type="CollisionShape2D" parent="StaticBody2D" unique_id=1365878167]
+position = Vector2(67520, 7616)
+shape = SubResource("RectangleShape2D_u6gxj")
+
+[node name="CollisionShape2D20" type="CollisionShape2D" parent="StaticBody2D" unique_id=1845886780]
+position = Vector2(68032, 7488)
+shape = SubResource("RectangleShape2D_u6gxj")
+
+[node name="CollisionShape2D15" type="CollisionShape2D" parent="StaticBody2D" unique_id=1898199934]
+position = Vector2(67776, 7872)
+shape = SubResource("RectangleShape2D_u6gxj")
+
+[node name="CollisionShape2D16" type="CollisionShape2D" parent="StaticBody2D" unique_id=289565270]
+position = Vector2(67392, 8000)
+shape = SubResource("RectangleShape2D_u6gxj")
+
+[node name="CollisionShape2D17" type="CollisionShape2D" parent="StaticBody2D" unique_id=2025558221]
+position = Vector2(68544, 7616)
+shape = SubResource("RectangleShape2D_u6gxj")
+
+[node name="CollisionShape2D18" type="CollisionShape2D" parent="StaticBody2D" unique_id=739995160]
+position = Vector2(68800, 7872)
+shape = SubResource("RectangleShape2D_u6gxj")
+
+[node name="CollisionShape2D19" type="CollisionShape2D" parent="StaticBody2D" unique_id=1523864860]
+position = Vector2(68416, 8000)
+shape = SubResource("RectangleShape2D_u6gxj")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D" unique_id=342223758]
+position = Vector2(66816, 4160)
+shape = SubResource("RectangleShape2D_ybbw1")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1901850144]
+stream = ExtResource("13_wpsbe")
+autoplay = true
+
+[node name="Enemies" type="Node2D" parent="." unique_id=1343360572]
+
+[node name="GenericEnemy" parent="Enemies" unique_id=1187400388 instance=ExtResource("4_l2uxv")]
+position = Vector2(3044, 1445)
+health = 8
+
+[node name="GenericEnemy2" parent="Enemies" unique_id=1051062743 instance=ExtResource("4_l2uxv")]
+position = Vector2(6348, 595)
+health = 8
+
+[node name="GenericEnemy3" parent="Enemies" unique_id=1863127586 instance=ExtResource("4_l2uxv")]
+position = Vector2(8603, 1749)
+health = 8
+
+[node name="GenericEnemy4" parent="Enemies" unique_id=1296170202 instance=ExtResource("4_l2uxv")]
+position = Vector2(14491, 1698)
+health = 8
+
+[node name="GenericEnemy5" parent="Enemies" unique_id=1118066202 instance=ExtResource("4_l2uxv")]
+position = Vector2(10582, 3234)
+health = 8
+
+[node name="GenericEnemy6" parent="Enemies" unique_id=877574677 instance=ExtResource("4_l2uxv")]
+position = Vector2(18819, 1681)
+health = 8
+
+[node name="GenericEnemy7" parent="Enemies" unique_id=619270142 instance=ExtResource("4_l2uxv")]
+position = Vector2(16256, 4416)
+health = 8
+
+[node name="GenericEnemy8" parent="Enemies" unique_id=1271221719 instance=ExtResource("4_l2uxv")]
+position = Vector2(25024, 1728)
+health = 8
+
+[node name="GenericEnemy9" parent="Enemies" unique_id=1146766191 instance=ExtResource("4_l2uxv")]
+position = Vector2(27520, 2432)
+health = 8
+
+[node name="GenericEnemy10" parent="Enemies" unique_id=1878832314 instance=ExtResource("4_l2uxv")]
+position = Vector2(26624, 3584)
+health = 8
+
+[node name="GenericEnemy11" parent="Enemies" unique_id=1958809180 instance=ExtResource("4_l2uxv")]
+position = Vector2(25024, 4864)
+health = 8
+
+[node name="GenericEnemy12" parent="Enemies" unique_id=510971888 instance=ExtResource("4_l2uxv")]
+position = Vector2(27904, 4864)
+health = 8
+
+[node name="GenericEnemy13" parent="Enemies" unique_id=1009421289 instance=ExtResource("4_l2uxv")]
+position = Vector2(26496, 4992)
+health = 8
+
+[node name="GenericEnemy14" parent="Enemies" unique_id=14638117 instance=ExtResource("4_l2uxv")]
+position = Vector2(27072, 4992)
+health = 8
+
+[node name="GenericEnemy16" parent="Enemies" unique_id=319753751 instance=ExtResource("4_l2uxv")]
+position = Vector2(30464, 4352)
+health = 8
+
+[node name="GenericEnemy17" parent="Enemies" unique_id=162334215 instance=ExtResource("4_l2uxv")]
+position = Vector2(33664, 3520)
+health = 8
+
+[node name="GenericEnemy18" parent="Enemies" unique_id=252802413 instance=ExtResource("4_l2uxv")]
+position = Vector2(32512, 2688)
+health = 8
+
+[node name="GenericEnemy19" parent="Enemies" unique_id=1906585233 instance=ExtResource("4_l2uxv")]
+position = Vector2(31808, 2880)
+health = 8
+
+[node name="GenericEnemy20" parent="Enemies" unique_id=890505947 instance=ExtResource("4_l2uxv")]
+position = Vector2(35904, 4416)
+health = 8
+
+[node name="GenericEnemy21" parent="Enemies" unique_id=850999595 instance=ExtResource("4_l2uxv")]
+position = Vector2(37184, 3904)
+health = 8
+
+[node name="GenericEnemy22" parent="Enemies" unique_id=1937347299 instance=ExtResource("4_l2uxv")]
+position = Vector2(29696, 1600)
+health = 8
+
+[node name="GenericEnemy23" parent="Enemies" unique_id=2109251249 instance=ExtResource("4_l2uxv")]
+position = Vector2(32448, 1408)
+health = 8
+
+[node name="GenericEnemy24" parent="Enemies" unique_id=953832539 instance=ExtResource("4_l2uxv")]
+position = Vector2(33664, 1024)
+health = 8
+
+[node name="GenericEnemy25" parent="Enemies" unique_id=923473336 instance=ExtResource("4_l2uxv")]
+position = Vector2(36928, 704)
+health = 8
+
+[node name="GenericEnemy26" parent="Enemies" unique_id=356311936 instance=ExtResource("4_l2uxv")]
+position = Vector2(39360, 1728)
+health = 8
+
+[node name="GenericEnemy27" parent="Enemies" unique_id=1845168537 instance=ExtResource("4_l2uxv")]
+position = Vector2(40128, 3904)
+health = 8
+
+[node name="GenericEnemy28" parent="Enemies" unique_id=949883763 instance=ExtResource("4_l2uxv")]
+position = Vector2(43264, 3712)
+health = 8
+
+[node name="GenericEnemy29" parent="Enemies" unique_id=1441686448 instance=ExtResource("4_l2uxv")]
+position = Vector2(45120, 2560)
+health = 8
+
+[node name="GenericEnemy30" parent="Enemies" unique_id=1512403021 instance=ExtResource("4_l2uxv")]
+position = Vector2(47296, 1728)
+health = 8
+
+[node name="GenericEnemy31" parent="Enemies" unique_id=423170405 instance=ExtResource("4_l2uxv")]
+position = Vector2(51392, 1856)
+health = 8
+
+[node name="GenericEnemy32" parent="Enemies" unique_id=756751702 instance=ExtResource("4_l2uxv")]
+position = Vector2(56512, 3008)
+health = 8
+
+[node name="GenericEnemy33" parent="Enemies" unique_id=1795957033 instance=ExtResource("4_l2uxv")]
+position = Vector2(53504, 5056)
+health = 8
+
+[node name="GenericEnemy34" parent="Enemies" unique_id=1345893770 instance=ExtResource("4_l2uxv")]
+position = Vector2(51456, 5568)
+health = 8
+
+[node name="GenericEnemy35" parent="Enemies" unique_id=2093586859 instance=ExtResource("4_l2uxv")]
+position = Vector2(50368, 6976)
+health = 8
+
+[node name="GenericEnemy36" parent="Enemies" unique_id=269223016 instance=ExtResource("4_l2uxv")]
+position = Vector2(52928, 7040)
+health = 8
+
+[node name="GenericEnemy37" parent="Enemies" unique_id=1423809402 instance=ExtResource("4_l2uxv")]
+position = Vector2(55168, 6080)
+health = 8
+
+[node name="GenericEnemy38" parent="Enemies" unique_id=472208028 instance=ExtResource("4_l2uxv")]
+position = Vector2(57536, 6720)
+health = 8
+
+[node name="GenericEnemy39" parent="Enemies" unique_id=613222539 instance=ExtResource("4_l2uxv")]
+position = Vector2(60160, 7808)
+health = 8
+
+[node name="GenericEnemy40" parent="Enemies" unique_id=1130226563 instance=ExtResource("4_l2uxv")]
+position = Vector2(62400, 7360)
+health = 8
+
+[node name="GenericEnemy41" parent="Enemies" unique_id=2096806163 instance=ExtResource("4_l2uxv")]
+position = Vector2(60480, 5952)
+health = 8
+
+[node name="GenericEnemy42" parent="Enemies" unique_id=1974671111 instance=ExtResource("4_l2uxv")]
+position = Vector2(65728, 5696)
+health = 8
+
+[node name="GenericEnemy43" parent="Enemies" unique_id=195942906 instance=ExtResource("4_l2uxv")]
+position = Vector2(68352, 3648)
+health = 8
+
+[node name="GenericEnemy44" parent="Enemies" unique_id=1953090037 instance=ExtResource("4_l2uxv")]
+position = Vector2(68928, 5312)
+health = 8
+
+[node name="GenericEnemy45" parent="Enemies" unique_id=32420453 instance=ExtResource("4_l2uxv")]
+position = Vector2(69440, 7104)
+health = 8
+
+[node name="GenericEnemy46" parent="Enemies" unique_id=993502362 instance=ExtResource("4_l2uxv")]
+position = Vector2(68032, 8128)
+health = 8
+
+[node name="GenericEnemy47" parent="Enemies" unique_id=1427763936 instance=ExtResource("4_l2uxv")]
+position = Vector2(70976, 6912)
+health = 8
+
+[node name="GenericEnemy48" parent="Enemies" unique_id=1560260726 instance=ExtResource("4_l2uxv")]
+position = Vector2(71552, 2752)
+health = 8
+
+[node name="Health" type="Node2D" parent="." unique_id=1142998650]
+
+[node name="HealthPickup" parent="Health" unique_id=1681229277 instance=ExtResource("15_u6gxj")]
+position = Vector2(8384, 1856)
+
+[node name="HealthPickup2" parent="Health" unique_id=1027360347 instance=ExtResource("15_u6gxj")]
+position = Vector2(8384, 1600)
+
+[node name="HealthPickup4" parent="Health" unique_id=2129524453 instance=ExtResource("15_u6gxj")]
+position = Vector2(8384, 1472)
+
+[node name="HealthPickup5" parent="Health" unique_id=377075269 instance=ExtResource("15_u6gxj")]
+position = Vector2(15040, 2880)
+
+[node name="HealthPickup6" parent="Health" unique_id=2145491472 instance=ExtResource("15_u6gxj")]
+position = Vector2(14656, 3776)
+
+[node name="HealthPickup7" parent="Health" unique_id=347651854 instance=ExtResource("15_u6gxj")]
+position = Vector2(14720, 3776)
+
+[node name="HealthPickup8" parent="Health" unique_id=1390528438 instance=ExtResource("15_u6gxj")]
+position = Vector2(14784, 3776)
+
+[node name="HealthPickup9" parent="Health" unique_id=1052151510 instance=ExtResource("15_u6gxj")]
+position = Vector2(14848, 3776)
+
+[node name="HealthPickup10" parent="Health" unique_id=1506919977 instance=ExtResource("15_u6gxj")]
+position = Vector2(14912, 3776)
+
+[node name="HealthPickup11" parent="Health" unique_id=767475844 instance=ExtResource("15_u6gxj")]
+position = Vector2(14976, 3776)
+
+[node name="HealthPickup12" parent="Health" unique_id=1905695159 instance=ExtResource("15_u6gxj")]
+position = Vector2(15040, 3776)
+
+[node name="HealthPickup13" parent="Health" unique_id=868582666 instance=ExtResource("15_u6gxj")]
+position = Vector2(15104, 3776)
+
+[node name="HealthPickup14" parent="Health" unique_id=1401181540 instance=ExtResource("15_u6gxj")]
+position = Vector2(15168, 3776)
+
+[node name="HealthPickup15" parent="Health" unique_id=1929377587 instance=ExtResource("15_u6gxj")]
+position = Vector2(15168, 3712)
+
+[node name="HealthPickup16" parent="Health" unique_id=1256126166 instance=ExtResource("15_u6gxj")]
+position = Vector2(15104, 3712)
+
+[node name="HealthPickup17" parent="Health" unique_id=4626994 instance=ExtResource("15_u6gxj")]
+position = Vector2(15040, 3712)
+
+[node name="HealthPickup18" parent="Health" unique_id=1054761919 instance=ExtResource("15_u6gxj")]
+position = Vector2(14976, 3712)
+
+[node name="HealthPickup19" parent="Health" unique_id=768841628 instance=ExtResource("15_u6gxj")]
+position = Vector2(14912, 3712)
+
+[node name="HealthPickup20" parent="Health" unique_id=1744524345 instance=ExtResource("15_u6gxj")]
+position = Vector2(14848, 3712)
+
+[node name="HealthPickup21" parent="Health" unique_id=1069692752 instance=ExtResource("15_u6gxj")]
+position = Vector2(14784, 3712)
+
+[node name="HealthPickup22" parent="Health" unique_id=341466557 instance=ExtResource("15_u6gxj")]
+position = Vector2(14720, 3712)
+
+[node name="HealthPickup23" parent="Health" unique_id=1356144262 instance=ExtResource("15_u6gxj")]
+position = Vector2(14656, 3712)
+
+[node name="HealthPickup24" parent="Health" unique_id=1860412003 instance=ExtResource("15_u6gxj")]
+position = Vector2(31552, 3776)
+
+[node name="HealthPickup25" parent="Health" unique_id=1021334859 instance=ExtResource("15_u6gxj")]
+position = Vector2(31616, 3776)
+
+[node name="HealthPickup26" parent="Health" unique_id=29666122 instance=ExtResource("15_u6gxj")]
+position = Vector2(31680, 3776)
+
+[node name="HealthPickup27" parent="Health" unique_id=1543909167 instance=ExtResource("15_u6gxj")]
+position = Vector2(31744, 3776)
+
+[node name="HealthPickup28" parent="Health" unique_id=1004390502 instance=ExtResource("15_u6gxj")]
+position = Vector2(31808, 3776)
+
+[node name="HealthPickup29" parent="Health" unique_id=291000614 instance=ExtResource("15_u6gxj")]
+position = Vector2(31872, 3776)
+
+[node name="HealthPickup30" parent="Health" unique_id=732927217 instance=ExtResource("15_u6gxj")]
+position = Vector2(31936, 3776)
+
+[node name="HealthPickup31" parent="Health" unique_id=683069385 instance=ExtResource("15_u6gxj")]
+position = Vector2(32000, 3776)
+
+[node name="HealthPickup32" parent="Health" unique_id=455222802 instance=ExtResource("15_u6gxj")]
+position = Vector2(32064, 3776)
+
+[node name="HealthPickup33" parent="Health" unique_id=1064021904 instance=ExtResource("15_u6gxj")]
+position = Vector2(32064, 3712)
+
+[node name="HealthPickup34" parent="Health" unique_id=507287411 instance=ExtResource("15_u6gxj")]
+position = Vector2(32000, 3712)
+
+[node name="HealthPickup35" parent="Health" unique_id=2073299143 instance=ExtResource("15_u6gxj")]
+position = Vector2(31936, 3712)
+
+[node name="HealthPickup36" parent="Health" unique_id=461151318 instance=ExtResource("15_u6gxj")]
+position = Vector2(31872, 3712)
+
+[node name="HealthPickup37" parent="Health" unique_id=1087280135 instance=ExtResource("15_u6gxj")]
+position = Vector2(31808, 3712)
+
+[node name="HealthPickup38" parent="Health" unique_id=1094804957 instance=ExtResource("15_u6gxj")]
+position = Vector2(31744, 3712)
+
+[node name="HealthPickup39" parent="Health" unique_id=223717622 instance=ExtResource("15_u6gxj")]
+position = Vector2(31680, 3712)
+
+[node name="HealthPickup40" parent="Health" unique_id=224535563 instance=ExtResource("15_u6gxj")]
+position = Vector2(31616, 3712)
+
+[node name="HealthPickup41" parent="Health" unique_id=46339780 instance=ExtResource("15_u6gxj")]
+position = Vector2(31552, 3712)
+
+[node name="HealthPickup42" parent="Health" unique_id=1952543359 instance=ExtResource("15_u6gxj")]
+position = Vector2(60224, 6080)
+
+[node name="HealthPickup43" parent="Health" unique_id=685139753 instance=ExtResource("15_u6gxj")]
+position = Vector2(60288, 6080)
+
+[node name="HealthPickup44" parent="Health" unique_id=1639005139 instance=ExtResource("15_u6gxj")]
+position = Vector2(60352, 6080)
+
+[node name="HealthPickup45" parent="Health" unique_id=1568434850 instance=ExtResource("15_u6gxj")]
+position = Vector2(60416, 6080)
+
+[node name="HealthPickup46" parent="Health" unique_id=1999949658 instance=ExtResource("15_u6gxj")]
+position = Vector2(60480, 6080)
+
+[node name="HealthPickup47" parent="Health" unique_id=1968219746 instance=ExtResource("15_u6gxj")]
+position = Vector2(60544, 6080)
+
+[node name="HealthPickup48" parent="Health" unique_id=183597300 instance=ExtResource("15_u6gxj")]
+position = Vector2(60608, 6080)
+
+[node name="HealthPickup49" parent="Health" unique_id=1278065129 instance=ExtResource("15_u6gxj")]
+position = Vector2(60672, 6080)
+
+[node name="HealthPickup50" parent="Health" unique_id=160270944 instance=ExtResource("15_u6gxj")]
+position = Vector2(60736, 6080)
+
+[node name="HealthPickup51" parent="Health" unique_id=1234575797 instance=ExtResource("15_u6gxj")]
+position = Vector2(60736, 6016)
+
+[node name="HealthPickup52" parent="Health" unique_id=1379620525 instance=ExtResource("15_u6gxj")]
+position = Vector2(60672, 6016)
+
+[node name="HealthPickup53" parent="Health" unique_id=1856875809 instance=ExtResource("15_u6gxj")]
+position = Vector2(60608, 6016)
+
+[node name="HealthPickup54" parent="Health" unique_id=64214645 instance=ExtResource("15_u6gxj")]
+position = Vector2(60544, 6016)
+
+[node name="HealthPickup55" parent="Health" unique_id=929809356 instance=ExtResource("15_u6gxj")]
+position = Vector2(60480, 6016)
+
+[node name="HealthPickup56" parent="Health" unique_id=1354812493 instance=ExtResource("15_u6gxj")]
+position = Vector2(60416, 6016)
+
+[node name="HealthPickup57" parent="Health" unique_id=1830517645 instance=ExtResource("15_u6gxj")]
+position = Vector2(60352, 6016)
+
+[node name="HealthPickup58" parent="Health" unique_id=2134574744 instance=ExtResource("15_u6gxj")]
+position = Vector2(60288, 6016)
+
+[node name="HealthPickup59" parent="Health" unique_id=649766537 instance=ExtResource("15_u6gxj")]
+position = Vector2(60224, 6016)
+
+[node name="HealthPickup60" parent="Health" unique_id=1705645411 instance=ExtResource("15_u6gxj")]
+position = Vector2(37568, 1856)
+
+[node name="HealthPickup61" parent="Health" unique_id=1628255805 instance=ExtResource("15_u6gxj")]
+position = Vector2(37632, 1856)
+
+[node name="HealthPickup62" parent="Health" unique_id=605260166 instance=ExtResource("15_u6gxj")]
+position = Vector2(37696, 1856)
+
+[node name="HealthPickup63" parent="Health" unique_id=89717470 instance=ExtResource("15_u6gxj")]
+position = Vector2(37760, 1856)
+
+[node name="HealthPickup64" parent="Health" unique_id=1316734803 instance=ExtResource("15_u6gxj")]
+position = Vector2(37824, 1856)
+
+[node name="HealthPickup65" parent="Health" unique_id=1225822029 instance=ExtResource("15_u6gxj")]
+position = Vector2(37888, 1856)
+
+[node name="HealthPickup66" parent="Health" unique_id=66412825 instance=ExtResource("15_u6gxj")]
+position = Vector2(37952, 1856)
+
+[node name="HealthPickup67" parent="Health" unique_id=490442514 instance=ExtResource("15_u6gxj")]
+position = Vector2(38016, 1856)
+
+[node name="HealthPickup68" parent="Health" unique_id=329459282 instance=ExtResource("15_u6gxj")]
+position = Vector2(38080, 1856)
+
+[node name="HealthPickup69" parent="Health" unique_id=1739228711 instance=ExtResource("15_u6gxj")]
+position = Vector2(38080, 1792)
+
+[node name="HealthPickup70" parent="Health" unique_id=156381647 instance=ExtResource("15_u6gxj")]
+position = Vector2(38016, 1792)
+
+[node name="HealthPickup71" parent="Health" unique_id=1458748290 instance=ExtResource("15_u6gxj")]
+position = Vector2(37952, 1792)
+
+[node name="HealthPickup72" parent="Health" unique_id=893559638 instance=ExtResource("15_u6gxj")]
+position = Vector2(37888, 1792)
+
+[node name="HealthPickup73" parent="Health" unique_id=158408099 instance=ExtResource("15_u6gxj")]
+position = Vector2(37824, 1792)
+
+[node name="HealthPickup74" parent="Health" unique_id=154781937 instance=ExtResource("15_u6gxj")]
+position = Vector2(37760, 1792)
+
+[node name="HealthPickup75" parent="Health" unique_id=490393626 instance=ExtResource("15_u6gxj")]
+position = Vector2(37696, 1792)
+
+[node name="HealthPickup76" parent="Health" unique_id=2050863770 instance=ExtResource("15_u6gxj")]
+position = Vector2(37632, 1792)
+
+[node name="HealthPickup77" parent="Health" unique_id=1986301422 instance=ExtResource("15_u6gxj")]
+position = Vector2(37568, 1792)
+
+[node name="HealthPickup78" parent="Health" unique_id=705627879 instance=ExtResource("15_u6gxj")]
+position = Vector2(26240, 2880)
+
+[node name="HealthPickup79" parent="Health" unique_id=674545869 instance=ExtResource("15_u6gxj")]
+position = Vector2(26304, 2880)
+
+[node name="HealthPickup80" parent="Health" unique_id=1215085021 instance=ExtResource("15_u6gxj")]
+position = Vector2(26368, 2880)
+
+[node name="HealthPickup81" parent="Health" unique_id=1843611402 instance=ExtResource("15_u6gxj")]
+position = Vector2(26432, 2880)
+
+[node name="HealthPickup82" parent="Health" unique_id=1022831889 instance=ExtResource("15_u6gxj")]
+position = Vector2(26496, 2880)
+
+[node name="HealthPickup83" parent="Health" unique_id=1603344222 instance=ExtResource("15_u6gxj")]
+position = Vector2(26560, 2880)
+
+[node name="HealthPickup84" parent="Health" unique_id=1113757797 instance=ExtResource("15_u6gxj")]
+position = Vector2(26624, 2880)
+
+[node name="HealthPickup85" parent="Health" unique_id=1733004910 instance=ExtResource("15_u6gxj")]
+position = Vector2(26688, 2880)
+
+[node name="HealthPickup86" parent="Health" unique_id=1372788228 instance=ExtResource("15_u6gxj")]
+position = Vector2(26752, 2880)
+
+[node name="HealthPickup87" parent="Health" unique_id=1192847775 instance=ExtResource("15_u6gxj")]
+position = Vector2(26752, 2816)
+
+[node name="HealthPickup88" parent="Health" unique_id=327737502 instance=ExtResource("15_u6gxj")]
+position = Vector2(26688, 2816)
+
+[node name="HealthPickup89" parent="Health" unique_id=798725178 instance=ExtResource("15_u6gxj")]
+position = Vector2(26624, 2816)
+
+[node name="HealthPickup90" parent="Health" unique_id=417627559 instance=ExtResource("15_u6gxj")]
+position = Vector2(26560, 2816)
+
+[node name="HealthPickup91" parent="Health" unique_id=1981448750 instance=ExtResource("15_u6gxj")]
+position = Vector2(26496, 2816)
+
+[node name="HealthPickup92" parent="Health" unique_id=840472747 instance=ExtResource("15_u6gxj")]
+position = Vector2(26432, 2816)
+
+[node name="HealthPickup93" parent="Health" unique_id=860314278 instance=ExtResource("15_u6gxj")]
+position = Vector2(26368, 2816)
+
+[node name="HealthPickup94" parent="Health" unique_id=106600856 instance=ExtResource("15_u6gxj")]
+position = Vector2(26304, 2816)
+
+[node name="HealthPickup95" parent="Health" unique_id=199274294 instance=ExtResource("15_u6gxj")]
+position = Vector2(26240, 2816)
+
+[node name="HealthPickup3" parent="Health" unique_id=349033028 instance=ExtResource("15_u6gxj")]
+position = Vector2(8384, 1728)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1345053760]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=1690247189]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer" unique_id=1350988862]
+libraries/ = SubResource("AnimationLibrary_c6mq3")
+autoplay = &"anim"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=299849692]
+offset_left = 57856.0
+offset_top = 832.0
+offset_right = 59776.0
+offset_bottom = 1024.0
+theme_override_font_sizes/normal_font_size = 128
+text = "hey you made it up here"
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="." unique_id=1007082755]
+offset_left = 60416.0
+offset_top = 832.0
+offset_right = 62336.0
+offset_bottom = 1024.0
+theme_override_font_sizes/normal_font_size = 128
+text = "cool"
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="." unique_id=1097981428]
+offset_left = 63744.0
+offset_top = 896.0
+offset_right = 65664.0
+offset_bottom = 1088.0
+theme_override_font_sizes/normal_font_size = 128
+text = "i bet ya expected more"
+
+[node name="RichTextLabel4" type="RichTextLabel" parent="." unique_id=870517558]
+offset_left = 66432.0
+offset_top = 768.0
+offset_right = 68800.0
+offset_bottom = 1152.0
+theme_override_font_sizes/normal_font_size = 128
+text = "can't let you through tho     sorry"
+
+[connection signal="body_entered" from="DeathPlane" to="DeathPlane" method="_on_body_entered"]
+[connection signal="body_entered" from="WinPlane" to="WinPlane" method="_on_body_entered"]

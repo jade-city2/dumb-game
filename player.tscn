@@ -1,0 +1,81 @@
+[gd_scene format=3 uid="uid://c3ghhusacoccn"]
+
+[ext_resource type="Script" uid="uid://bg5mfoxeqhhuw" path="res://player.gd" id="1_onrkg"]
+[ext_resource type="Shader" uid="uid://e4uc0wpfydcl" path="res://items_and_Stuff/transparent_it.gdshader" id="2_hqtel"]
+[ext_resource type="Texture2D" uid="uid://c67o2mohxrhro" path="res://sprites/character/player.png" id="3_sweqy"]
+[ext_resource type="Texture2D" uid="uid://brr4w6ghqhvb6" path="res://sprites/character/gun.png" id="4_2hs0m"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1jxqw"]
+shader = ExtResource("2_hqtel")
+shader_parameter/target_color = Color(0, 1, 0, 1)
+shader_parameter/precision = 0.0350000016625
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8tkyl"]
+radius = 65.96969
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_76ato"]
+shader = ExtResource("2_hqtel")
+shader_parameter/target_color = Color(0, 1, 0, 1)
+shader_parameter/precision = 0.00400000019
+
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=94998651]
+collision_layer = 4
+collision_mask = 5
+script = ExtResource("1_onrkg")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1164638208]
+material = SubResource("ShaderMaterial_1jxqw")
+texture = ExtResource("3_sweqy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=183251515]
+shape = SubResource("CircleShape2D_8tkyl")
+
+[node name="Node2D" type="Node2D" parent="." unique_id=1481581380]
+
+[node name="Sprite2D2" type="Sprite2D" parent="Node2D" unique_id=1211365483]
+material = SubResource("ShaderMaterial_76ato")
+position = Vector2(100, 0)
+scale = Vector2(1, 0.2)
+texture = ExtResource("4_2hs0m")
+
+[node name="Marker2D" type="Marker2D" parent="Node2D" unique_id=2104398153]
+position = Vector2(160, 0)
+
+[node name="OuchieBox" type="Area2D" parent="." unique_id=716318324]
+collision_layer = 32
+collision_mask = 32
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="OuchieBox" unique_id=932424812]
+shape = SubResource("CircleShape2D_8tkyl")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=567686011]
+
+[node name="Control" type="Control" parent="CanvasLayer" unique_id=1662112077]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control" unique_id=1127235980]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 640
+theme_override_constants/margin_bottom = 608
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/MarginContainer" unique_id=441306013]
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Control/MarginContainer/HBoxContainer" unique_id=471419228]
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(1, 0, 0, 1)
+
+[connection signal="area_shape_entered" from="OuchieBox" to="." method="ouchies_entered"]
